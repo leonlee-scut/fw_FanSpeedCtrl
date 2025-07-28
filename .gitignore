@@ -84,3 +84,11 @@ project.script
 
 # STM32CubeMX Drivers
 **/STM32CubeMX/Drivers
+
+# uvision project files
+*.uvguix.*
+*.uvgui.*
+*.uvpdbgx
+*.uvoptx
+DebugConfig/
+*.ini
