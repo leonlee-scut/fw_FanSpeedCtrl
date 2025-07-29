@@ -8,7 +8,17 @@ project:
     - pack: ARM::CMSIS
     - pack: ARM::CMSIS-RTX
     - pack: Keil::STM32G0xx_DFP
+  add-path:
+    - ./app/inc
+    - ./bsp/inc
+    - ./common/inc
   groups:
     - group: app
       files:
         - file: app/src/app_main.c
+        - file: app/src/led.c
+    - group: common
+      files:
+        - file: common/src/debug.c
+        - file: common/src/delay.c
+        - file: common/src/iir_filter.c

@@ -21,6 +21,9 @@
 #include CMSIS_device_header
 #include <cmsis_os2.h>
 
+#include "bsp.h"
+#include "led.h"
+
 __NO_RETURN static void app_main_thread(void* argument)
 {
     (void)argument;
@@ -40,6 +43,7 @@ int app_main(void)
 
     osKernelInitialize();                       // Initialize CMSIS-RTOS
     osThreadNew(app_main_thread, NULL, NULL);   // Create application main thread
+    LED_ThreadCreate();                         // Create LED thread
     osKernelStart();                            // Start thread execution
 }
 
