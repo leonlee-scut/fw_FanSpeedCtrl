@@ -57,8 +57,10 @@ LR_ROM0 __ROM0_BASE __ROM0_SIZE  {
   }
 #endif
 
+#if __STACK_SIZE > 0
   ARM_LIB_STACK (__RAM0_BASE + __RAM0_SIZE - __STACKSEAL_SIZE) EMPTY -__STACK_SIZE {   ; Reserve empty region for stack
   }
+#endif
 
 #if __STACKSEAL_SIZE > 0
   STACKSEAL +0 EMPTY __STACKSEAL_SIZE {             ; Reserve empty region for stack seal immediately after stack

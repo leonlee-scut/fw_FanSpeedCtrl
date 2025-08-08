@@ -9,6 +9,18 @@
 #ifndef RTE_COMPONENTS_H
 #define RTE_COMPONENTS_H
 
+/* ARM::CMSIS-Compiler:OS Interface:CMSIS-RTOS2@2.1.0 */
+#define RTE_CMSIS_Compiler_OS_Interface       /* Compiler OS Interface */
+#define RTE_CMSIS_Compiler_OS_Interface_RTOS2 /* Compiler OS Interface: CMSIS-RTOS2 */
+/* Features */
+#define RTE_CMSIS_Compiler_OS_Interface_RTOS2_LOCKS     /* Implements _mutex functions */
+#define RTE_CMSIS_Compiler_OS_Interface_RTOS2_LIBSPACE  /* Implements per-thread static data management */
+/* ARM::CMSIS-Compiler:STDIN:Custom@1.1.0 */
+#define RTE_CMSIS_Compiler_STDIN                 /* CMSIS-Compiler STDIN */
+#define RTE_CMSIS_Compiler_STDIN_Custom          /* CMSIS-Compiler STDIN: Custom */
+/* ARM::CMSIS-Compiler:STDOUT:Custom@1.1.0 */
+#define RTE_CMSIS_Compiler_STDOUT                /* CMSIS-Compiler STDOUT */
+#define RTE_CMSIS_Compiler_STDOUT_Custom         /* CMSIS-Compiler STDOUT: Custom */
 /* ARM::CMSIS:RTOS2:Keil RTX5&Source@5.9.0 */
 #define RTE_CMSIS_RTOS2                 /* CMSIS-RTOS2 */
 #define RTE_CMSIS_RTOS2_RTX5            /* CMSIS-RTOS2 Keil RTX5 */

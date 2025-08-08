@@ -4,10 +4,15 @@ project:
     - component: Device:CubeMX
     - component: ARM::CMSIS:OS Tick:SysTick
     - component: ARM::CMSIS:RTOS2:Keil RTX5&Source
+    - component: ARM::CMSIS-Compiler:CORE
+    - component: ARM::CMSIS-Compiler:STDOUT:Custom
+    - component: ARM::CMSIS-Compiler:STDIN:Custom
+    - component: CMSIS-Compiler:OS Interface:CMSIS-RTOS2
   packs:
     - pack: ARM::CMSIS
     - pack: ARM::CMSIS-RTX
     - pack: Keil::STM32G0xx_DFP
+    - pack: ARM::CMSIS-Compiler
   add-path:
     - ./app/inc
     - ./bsp/inc
@@ -19,6 +24,20 @@ project:
         - file: app/src/led.c
     - group: common
       files:
-        - file: common/src/debug.c
         - file: common/src/delay.c
         - file: common/src/iir_filter.c
+        - file: common/src/assert.c
+        - file: common/src/atomic.c
+        - file: common/src/c_log.c
+        - file: common/src/critical_section.c
+        - file: common/src/fifo.c
+        - file: common/src/fxn.c
+        - file: common/src/retarget_no_semihosting.c
+        - file: common/src/serial_retarget_cm0p.c
+    - group: bsp
+      files:
+        - file: bsp/src/bsp.c
+  misc:
+    - for-compiler: AC6
+      Link:
+        - --map

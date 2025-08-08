@@ -33,7 +33,7 @@ extern "C" {
 #define debug_if(cond, fmt, ...)
 #endif // !defined(NDEBUG)
 
-void debug_print(const char *const fmt, ...);
+// void debug_print(const char *const fmt, ...);
 
 #ifdef __cplusplus
 }
