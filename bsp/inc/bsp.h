@@ -25,6 +25,9 @@
 #include CMSIS_device_header
 #include "MX_Device.h"
 #include "bsp_gpio.h"
+#include "bsp_pwm.h"
+
+#include "assert.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -73,6 +76,17 @@ extern "C" {
 // #define USER_TIM_PRESCALER          128
 // #define USER_TIM_PERIOD             62500
 
+// PWM Timer
+#define PWM_TIMER_HANDLE            &htim1
+#define PWM_OC_CHANNEL              TIM_CHANNEL_1
+
+// CAP Timer
+#define CAP_TIMER_HANDLE            &htim3
+#define CAP_CH1_CHANNEL             TIM_CHANNEL_3
+#define CAP_CH2_CHANNEL             TIM_CHANNEL_4
+#define CAP_CH1                     (0)
+#define CAP_CH2                     (1)
+
 // Marcos
 #define LED_ON(led)                 pinSet(led)
 #define LED_OFF(led)                pinReset(led)
@@ -93,6 +107,8 @@ extern UART_HandleTypeDef   huart2;
 extern I2C_HandleTypeDef    hi2c1;
 extern ADC_HandleTypeDef    hadc1;
 extern DMA_HandleTypeDef    hdma_adc1;
+extern TIM_HandleTypeDef    htim1;
+extern TIM_HandleTypeDef    htim3;
 
 void bsp_init(void);
 

@@ -21,7 +21,7 @@
 
 void bsp_init(void)
 {
-    
+    pwm_init(); // Initialize PWM
 }
 
 /************* (C) COPYRIGHT South China Univ. of Tech. ****** END OF FILE ****/

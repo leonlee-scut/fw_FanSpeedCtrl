@@ -37,6 +37,7 @@ project:
     - group: bsp
       files:
         - file: bsp/src/bsp.c
+        - file: bsp/src/bsp_pwm.c
   misc:
     - for-compiler: AC6
       Link:
