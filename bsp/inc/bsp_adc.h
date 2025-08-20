@@ -1,9 +1,9 @@
 /**
-  * @file bsp_pwm.h 
+  * @file bsp_adc.h
   * @brief 
   * @author Leon Lee (leonlee.scut@outlook.com)
   * @version 0.1
-  * @date 2025/08/11
+  * @date 2025/08/16
   * 
   * @copyright Copyright (c) 2025 South China University of Technology.
   * All rights reserved.
@@ -14,12 +14,11 @@
   * 
   * @par History:
   * 	Date		Version		Author			Description
-  * 	2025/08/11	0.1			Leon Lee		Preliminary version.
+  * 	2025/08/16	0.1			Leon Lee		Preliminary version.
   */
 
-
-#ifndef __BSP_PWM_H__
-#define __BSP_PWM_H__
+#ifndef __BSP_ADC_H__
+#define __BSP_ADC_H__
 
 #include <stdint.h>
 #include "RTE_Components.h"
@@ -29,22 +28,29 @@
 extern "C" {
 #endif /* extern "C" */
 
-typedef enum {
-    PWM_STATUS_STOPPED,
-    PWM_STATUS_RUNNING
-} PWM_StatusTypeDef;
+enum
+{
+    ADC_CH1 = 0,
+    ADC_CH2,
+    ADC_CH3,
+    ADC_CH4,
+    ADC_CH5,
+    ADC_CH6,
+    ADC_CH7,
+    ADC_CH8,
+    ADC_CHn
+};
 
-int bsp_pwm_init(TIM_HandleTypeDef* htim, uint32_t OC_Channel);
-int bsp_pwm_start(void);
-int bsp_pwm_stop(void);
-int bsp_pwm_set_duty_cycle(uint32_t duty_cycle);
-uint32_t bsp_pwm_get_duty_cycle(void);
-uint32_t bsp_pwm_get_frequency(void);
-PWM_StatusTypeDef bsp_pwm_get_status(void);
+int bsp_adc_init(ADC_HandleTypeDef* hadc, DMA_HandleTypeDef* hdma, TIM_HandleTypeDef* htim);
+void bsp_adc_start(void);
+void bsp_adc_stop(void);
+uint16_t bsp_adc_read_raw(uint8_t chn);
+
+void bsp_adc_complete_callback(uint32_t *pData, uint32_t length);
 
 #ifdef __cplusplus
 }
 #endif /* extern "C" */
 
-#endif // __BSP_PWM_H__
+#endif // __BSP_ADC_H__
 /************* (C) COPYRIGHT South China Univ. of Tech. ****** END OF FILE ****/

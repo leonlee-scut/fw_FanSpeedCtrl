@@ -26,6 +26,8 @@
 #include "MX_Device.h"
 #include "bsp_gpio.h"
 #include "bsp_pwm.h"
+#include "bsp_cap.h"
+#include "bsp_adc.h"
 
 #include "assert.h"
 
@@ -71,7 +73,7 @@ extern "C" {
 #define COMM_USART                  &huart2
 
 // External ADC Trigger Timer
-// #define EXT_ADC_TRIG_TIMER_HANDLE   &htim16
+#define EXT_ADC_TRIG_TIMER_HANDLE   &htim15
 // #define EXT_ADC_TRIG_TIMER          TIM16
 // #define USER_TIM_PRESCALER          128
 // #define USER_TIM_PERIOD             62500
@@ -82,10 +84,16 @@ extern "C" {
 
 // CAP Timer
 #define CAP_TIMER_HANDLE            &htim3
-#define CAP_CH1_CHANNEL             TIM_CHANNEL_3
-#define CAP_CH2_CHANNEL             TIM_CHANNEL_4
-#define CAP_CH1                     (0)
-#define CAP_CH2                     (1)
+#define CAP_CH1_TIM_CHANNEL         TIM_CHANNEL_3
+#define CAP_CH2_TIM_CHANNEL         TIM_CHANNEL_4
+// #define CAP_CH1                     (0)
+// #define CAP_CH2                     (1)
+// #define CAP_CHn                     (2)
+
+// ADC Interface
+#define ADC_HANDLE                 &hadc1
+#define ADC_DMA_HANDLE             &hdma_adc1
+#define ADC_CHANNELS               (ADC_CHn)
 
 // Marcos
 #define LED_ON(led)                 pinSet(led)
@@ -109,6 +117,7 @@ extern ADC_HandleTypeDef    hadc1;
 extern DMA_HandleTypeDef    hdma_adc1;
 extern TIM_HandleTypeDef    htim1;
 extern TIM_HandleTypeDef    htim3;
+extern TIM_HandleTypeDef    htim15;
 
 void bsp_init(void);
 

@@ -38,6 +38,8 @@ project:
       files:
         - file: bsp/src/bsp.c
         - file: bsp/src/bsp_pwm.c
+        - file: bsp/src/bsp_cap.c
+        - file: bsp/src/bsp_adc.c
   misc:
     - for-compiler: AC6
       Link:

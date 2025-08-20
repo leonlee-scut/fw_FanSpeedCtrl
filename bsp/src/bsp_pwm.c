@@ -40,7 +40,7 @@ static uint32_t __oc_channel = TIM_CHANNEL_1;   // Output Compare channel for PW
   * @param[in] OC_Channel The output compare channel to be used for PWM.
   * @return 0 on success, negative on failure
   */
-int pwm_init(TIM_HandleTypeDef* htim,  uint32_t OC_Channel)
+int bsp_pwm_init(TIM_HandleTypeDef* htim,  uint32_t OC_Channel)
 {
     assert(htim != NULL);
     assert(OC_Channel == TIM_CHANNEL_1 || OC_Channel == TIM_CHANNEL_2 ||
@@ -53,8 +53,8 @@ int pwm_init(TIM_HandleTypeDef* htim,  uint32_t OC_Channel)
     __frequency /= __period + 1;                    // Calculate frequency from period
     __frequency /= __pwm_timer->Init.Prescaler + 1; // Adjust frequency by prescaler
 
-    pwm_set_duty_cycle(0);                          // Initialize duty cycle to 0
-    pwm_stop();                                     // Ensure PWM is stopped initially
+    bsp_pwm_set_duty_cycle(0);                          // Initialize duty cycle to 0
+    bsp_pwm_stop();                                     // Ensure PWM is stopped initially
     
     return 0;
 }   
@@ -68,7 +68,7 @@ int pwm_init(TIM_HandleTypeDef* htim,  uint32_t OC_Channel)
   *
   * @return 0 on success, negative on failure
   */
-int pwm_start(void)
+int bsp_pwm_start(void)
 {
     HAL_TIM_Base_Start(__pwm_timer);
     HAL_TIM_PWM_Start(__pwm_timer, __oc_channel);   // Start PWM on specified channel
@@ -84,7 +84,7 @@ int pwm_start(void)
   *
   * @return 0 on success
   */
-int pwm_stop(void)
+int bsp_pwm_stop(void)
 {
     HAL_TIM_PWM_Stop(__pwm_timer, __oc_channel);    // Stop PWM on specified channel
     HAL_TIM_Base_Stop(__pwm_timer);
@@ -103,7 +103,7 @@ int pwm_stop(void)
   * @param[in] duty_cycle Duty cycle as a percentage of the period
   * @return 0 on success, negative on failure
   */
-int pwm_set_duty_cycle(uint32_t duty_cycle)
+int bsp_pwm_set_duty_cycle(uint32_t duty_cycle)
 {
     __duty_cycle = (duty_cycle > 100) ? 100 : duty_cycle;
     WRITE_REG(__pwm_timer->Instance->CCR1, __duty_cycle * (__period + 1) / 100);
@@ -122,7 +122,7 @@ int pwm_set_duty_cycle(uint32_t duty_cycle)
   * @return Current duty cycle as a percentage of the period.
   */
 
-uint32_t pwm_get_duty_cycle(void)
+uint32_t bsp_pwm_get_duty_cycle(void)
 {
     return __duty_cycle;
 }
@@ -139,7 +139,7 @@ uint32_t pwm_get_duty_cycle(void)
   * @return Current frequency in hertz (Hz).
   */
 
-uint32_t pwm_get_frequency(void)
+uint32_t bsp_pwm_get_frequency(void)
 {
     return __frequency;
 }
@@ -154,7 +154,7 @@ uint32_t pwm_get_frequency(void)
   *
   * @return Current status of the PWM output (PWM_STATUS_RUNNING or PWM_STATUS_STOPPED).
   */
-PWM_StatusTypeDef pwm_get_status(void)
+PWM_StatusTypeDef bsp_pwm_get_status(void)
 {
     if (HAL_TIM_Base_GetState(__pwm_timer) == HAL_TIM_STATE_BUSY &&
         HAL_TIM_GetChannelState(__pwm_timer, __oc_channel) == HAL_TIM_CHANNEL_STATE_BUSY)
