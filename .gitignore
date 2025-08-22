@@ -78,6 +78,7 @@ project.script
 .vscode/tasks.json
 .vscode/settings.json
 .cmd.jlink
+JLinkLog.txt
 
 # legacy intermediate project file
 *.cprj

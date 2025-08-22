@@ -96,6 +96,7 @@ void LED_ThreadCreate(void)
     // _led_blink_mode = (uint8_t *)_led_blink_pattern[4];
     // _led_blink_mode = (uint8_t *)_led_blink_pattern[LED_NO_BLINK];
     osThreadAttr_t attr = {
+        .name = "LED",
         .priority = osPriorityLow,
         .stack_size = 256,
         };

@@ -40,10 +40,10 @@ project:
         - file: bsp/src/bsp_pwm.c
         - file: bsp/src/bsp_cap.c
         - file: bsp/src/bsp_adc.c
-  # misc:
-  #   - for-compiler: AC6
-  #     Link:
-  #       - --map
+  misc:
+    - for-compiler: AC6
+      C-CPP:
+        - -fshort-enums
 
   # List executable file formats to be generated.
   output:

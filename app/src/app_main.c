@@ -59,7 +59,10 @@ int app_main(void)
     // ...
 
     osKernelInitialize();                       // Initialize CMSIS-RTOS
-    osThreadNew(app_main_thread, NULL, NULL);   // Create application main thread
+    osThreadAttr_t attr = {
+        .name = "Main",
+        };
+    osThreadNew(app_main_thread, NULL, &attr);   // Create application main thread
     LED_ThreadCreate();                         // Create LED thread
     osKernelStart();                            // Start thread execution
 
