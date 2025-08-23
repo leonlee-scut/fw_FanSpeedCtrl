@@ -31,9 +31,10 @@ solution:
           images:
             - project-context: FanSpeedCtrl.Debug
           debugger:
-            name: Keil uVision
-            uv4: C:\Keil_v5\UV4\UV4.exe
-            args: []
+            name: ST-Link@pyOCD
+            port: 3333
+            protocol: swd
+            clock: 10000000
       # device: STMicroelectronics::STM32G071RBTx
 
       # List of different build configurations.

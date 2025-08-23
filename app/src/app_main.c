@@ -30,7 +30,7 @@
 __NO_RETURN static void app_main_thread(void* argument)
 {
     (void)argument;
-    // ...
+    
     for (;;) 
     {
         osDelay(1000); // Delay for 1 second
