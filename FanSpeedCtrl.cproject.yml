@@ -22,6 +22,7 @@ project:
       files:
         - file: app/src/app_main.c
         - file: app/src/led.c
+        - file: app/src/ntc.c
     - group: common
       files:
         - file: common/src/delay.c
