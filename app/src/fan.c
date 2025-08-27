@@ -153,6 +153,7 @@ void fan_set_curve(uint8_t T_start, uint8_t T_min, uint8_t T_max, uint8_t D_min)
     __fan_curve.D_min = D_min;
 }
 
+
 /**
   * @brief Get the fan curve
   * 
@@ -173,6 +174,7 @@ void fan_get_curve(uint8_t* T_start, uint8_t* T_min, uint8_t* T_max, uint8_t* D_
     *D_min = __fan_curve.D_min;
 }
 
+
 /**
   * @brief Get the fan curve pointer
   * 
@@ -185,5 +187,37 @@ FAN_Curv_TypeDef* fan_get_curve_ptr(void)
     return &__fan_curve;
 }
 
+
+/**
+  * @brief Directly set the fan to full speed
+  * 
+  * Set the fan to full speed by setting the PWM duty cycle to 100%.
+  */
+void fan_full_speed(void)
+{
+    bsp_pwm_set_duty_cycle(100);
+}
+
+
+/**
+  * @brief Directly set the fan to minimum speed
+  * 
+  * Set the fan to minimum speed by setting the PWM duty cycle to D_min.
+  */
+void fan_min_speed(void)
+{
+    bsp_pwm_set_duty_cycle(__fan_curve.D_min);
+}
+
+
+/**
+  * @brief Directly Stop the fan
+  * 
+  * Set the fan to 0% duty cycle, effectively stopping the fan.
+  */
+void fan_stop(void)
+{
+    bsp_pwm_set_duty_cycle(0);
+}
 
 /************* (C) COPYRIGHT South China Univ. of Tech. ****** END OF FILE ****/
