@@ -61,6 +61,10 @@ void fan_get_curve(uint8_t* T_start, uint8_t* T_min, uint8_t* T_max, uint8_t* D_
 
 FAN_Curv_TypeDef* fan_get_curve_ptr(void);
 
+void fan_full_speed(void);
+void fan_min_speed(void);
+void fan_stop(void);
+
 #ifdef __cplusplus
 }
 #endif /* extern "C" */
